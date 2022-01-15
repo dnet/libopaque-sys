@@ -4,9 +4,10 @@
 
 include!("./bindings.rs");
 
-use libsodium_sys::{crypto_hash_sha512_statebytes, crypto_scalarmult_base};
-
-// TODO use crypto_* constants from libsodium_sys as well
+use libsodium_sys::{crypto_auth_hmacsha512_BYTES, crypto_auth_hmacsha512_KEYBYTES,
+    crypto_core_ristretto255_BYTES, crypto_core_ristretto255_SCALARBYTES,
+    crypto_hash_sha512_BYTES, crypto_scalarmult_BYTES, crypto_scalarmult_SCALARBYTES,
+    crypto_hash_sha512_statebytes, crypto_scalarmult_base};
 
 const OPAQUE_SHARED_SECRETBYTES: usize = 32;
 const OPAQUE_NONCE_BYTES: u32 = 32;
