@@ -39,17 +39,17 @@ const OPAQUE_REGISTER_SECRET_LEN: usize = (
     crypto_scalarmult_SCALARBYTES +
     crypto_core_ristretto255_SCALARBYTES) as usize;
 
+fn opaque_server_auth_ctx_len() -> usize {
+    crypto_auth_hmacsha512_KEYBYTES as usize +
+        unsafe { crypto_hash_sha512_statebytes() }
+}
+
 #[cfg(test)]
 mod tests {
     use crate::*;
 
     const pwdU: &[u8; 4] = b"asdf";
     const pwdU_len: u16 = pwdU.len() as u16;
-
-    fn opaque_server_auth_ctx_len() -> usize {
-        crypto_auth_hmacsha512_KEYBYTES as usize +
-            unsafe { crypto_hash_sha512_statebytes() }
-    }
 
     #[test]
     fn register_with_global_server_key() {
