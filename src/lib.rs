@@ -172,8 +172,8 @@ mod tests {
             OPAQUE_USER_SESSION_SECRET_LEN + pwdU.len());
         let mut pub_ = [0u8; OPAQUE_USER_SESSION_PUBLIC_LEN];
         unsafe {
-            opaque_CreateCredentialRequest(pwdU.as_ptr(), pwdU_len,
-                                           sec.as_mut_ptr(), pub_.as_mut_ptr());
+            assert_eq!(0, opaque_CreateCredentialRequest(
+                    pwdU.as_ptr(), pwdU_len, sec.as_mut_ptr(), pub_.as_mut_ptr()));
         }
 
         let mut resp: Vec<u8> = Vec::with_capacity(OPAQUE_SERVER_SESSION_LEN + envU_len);
@@ -249,9 +249,11 @@ mod tests {
         });
         unsafe {
             opaque_StoreUserRecord(rsec.as_ptr(), rrec.as_mut_ptr());
-            opaque_CreateCredentialRequest(pwdU.as_ptr(), pwdU_len,
-                                           sec.as_mut_ptr(), pub_.as_mut_ptr());
         }
+        assert_eq!(0, unsafe {
+            opaque_CreateCredentialRequest(pwdU.as_ptr(), pwdU_len,
+                                           sec.as_mut_ptr(), pub_.as_mut_ptr())
+        });
         assert_eq!(0, unsafe {
             opaque_CreateCredentialResponse(pub_.as_ptr(), rrec.as_ptr(), &ids,
                                            std::ptr::null(), resp.as_mut_ptr(),
