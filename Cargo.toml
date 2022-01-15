@@ -1,0 +1,12 @@
+[package]
+name = "libopaque-sys"
+version = "0.1.0"
+links = "libopaque"
+build = "build.rs"
+edition = "2021"
+
+[dependencies]
+cc = { version = "1.0.72", features = ["parallel"] }
+libc = "0.2.109"
+libsodium-sys = "0.2.7"
+pkg-config = "0.3.23"
