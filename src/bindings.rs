@@ -352,6 +352,7 @@ extern "C" {
     #[doc = "protected) memory for an extra_key that can be used to"]
     #[doc = "encrypt/authenticate additional data."]
     #[doc = "@return the function returns 0 if everything is correct"]
+    #[must_use]
     pub fn opaque_Register(
         pwdU: *const u8,
         pwdU_len: u16,
@@ -374,6 +375,7 @@ extern "C" {
     #[doc = "until opaque_RecoverCredentials."]
     #[doc = "@param [out] pub - the message to be sent to the server"]
     #[doc = "@return the function returns 0 if everything is correct"]
+    #[must_use]
     pub fn opaque_CreateCredentialRequest(
         pwdU: *const u8,
         pwdU_len: u16,
@@ -403,6 +405,7 @@ extern "C" {
     #[doc = "param is optional if no explicit user auth is necessary it can be"]
     #[doc = "set to NULL"]
     #[doc = "@return the function returns 0 if everything is correct"]
+    #[must_use]
     pub fn opaque_CreateCredentialResponse(
         pub_: *const u8,
         rec: *const u8,
@@ -441,6 +444,7 @@ extern "C" {
     #[doc = "@param [out] export_key - key used to encrypt/authenticate extra"]
     #[doc = "material not stored directly in the envelope"]
     #[doc = "@return the function returns 0 if the protocol is executed correctly"]
+    #[must_use]
     pub fn opaque_RecoverCredentials(
         resp: *const u8,
         sec: *const u8,
@@ -464,6 +468,7 @@ extern "C" {
     #[doc = "@param [in] sec - the context returned by opaque_CreateCredentialResponse()"]
     #[doc = "@param [in] authU is the authentication token sent by the user."]
     #[doc = "@return the function returns 0 if the hmac verifies correctly."]
+    #[must_use]
     pub fn opaque_UserAuth(sec: *const u8, authU: *const u8) -> ::std::os::raw::c_int;
 }
 extern "C" {
@@ -482,6 +487,7 @@ extern "C" {
     #[doc = "important and implementation specific info such as user/client id,"]
     #[doc = "envelope configuration etc."]
     #[doc = "@return the function returns 0 if everything is correct."]
+    #[must_use]
     pub fn opaque_CreateRegistrationRequest(
         pwdU: *const u8,
         pwdU_len: u16,
@@ -502,6 +508,7 @@ extern "C" {
     #[doc = "@param [out] pub - the evaluated OPRF and pubkey of the server to"]
     #[doc = "be passed to the client into opaque_FinalizeRequest()"]
     #[doc = "@return the function returns 0 if everything is correct."]
+    #[must_use]
     pub fn opaque_CreateRegistrationResponse(
         M: *const u8,
         sec: *mut u8,
@@ -530,6 +537,7 @@ extern "C" {
     #[doc = "@param [out] pub - the evaluated OPRF and pubkey of the server to"]
     #[doc = "be passed to the client into opaque_FinalizeRequest()"]
     #[doc = "@return the function returns 0 if everything is correct."]
+    #[must_use]
     pub fn opaque_Create1kRegistrationResponse(
         M: *const u8,
         pkS: *const u8,
@@ -561,6 +569,7 @@ extern "C" {
     #[doc = "material not stored directly in the envelope"]
     #[doc = ""]
     #[doc = "@return the function returns 0 if everything is correct."]
+    #[must_use]
     pub fn opaque_FinalizeRequest(
         sec: *const u8,
         pub_: *const u8,
