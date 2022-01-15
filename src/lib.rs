@@ -9,33 +9,33 @@ use libsodium_sys::{crypto_auth_hmacsha512_BYTES, crypto_auth_hmacsha512_KEYBYTE
     crypto_hash_sha512_BYTES, crypto_scalarmult_BYTES, crypto_scalarmult_SCALARBYTES,
     crypto_hash_sha512_statebytes, crypto_scalarmult_base};
 
-const OPAQUE_SHARED_SECRETBYTES: usize = 32;
-const OPAQUE_NONCE_BYTES: u32 = 32;
-const OPAQUE_USER_RECORD_LEN: usize = (
+pub const OPAQUE_SHARED_SECRETBYTES: usize = 32;
+pub const OPAQUE_NONCE_BYTES: u32 = 32;
+pub const OPAQUE_USER_RECORD_LEN: usize = (
     crypto_core_ristretto255_SCALARBYTES +
     crypto_scalarmult_SCALARBYTES +
     crypto_scalarmult_BYTES +
     crypto_scalarmult_BYTES) as usize + std::mem::size_of::<u32>();
-const OPAQUE_USER_SESSION_PUBLIC_LEN: usize = (
+pub const OPAQUE_USER_SESSION_PUBLIC_LEN: usize = (
     crypto_core_ristretto255_BYTES +
     crypto_scalarmult_BYTES +
     OPAQUE_NONCE_BYTES) as usize;
-const OPAQUE_USER_SESSION_SECRET_LEN: usize = (
+pub const OPAQUE_USER_SESSION_SECRET_LEN: usize = (
     crypto_core_ristretto255_SCALARBYTES +
     crypto_scalarmult_SCALARBYTES +
     OPAQUE_NONCE_BYTES +
     crypto_core_ristretto255_BYTES) as usize + std::mem::size_of::<u16>();
-const OPAQUE_SERVER_SESSION_LEN: usize = (
+pub const OPAQUE_SERVER_SESSION_LEN: usize = (
     crypto_core_ristretto255_BYTES +
     crypto_scalarmult_BYTES +
     OPAQUE_NONCE_BYTES +
     crypto_auth_hmacsha512_BYTES) as usize + std::mem::size_of::<u32>();
-const OPAQUE_REGISTER_USER_SEC_LEN: usize =
+pub const OPAQUE_REGISTER_USER_SEC_LEN: usize =
     (crypto_core_ristretto255_SCALARBYTES as usize) + std::mem::size_of::<u16>();
-const OPAQUE_REGISTER_PUBLIC_LEN: usize = (
+pub const OPAQUE_REGISTER_PUBLIC_LEN: usize = (
     crypto_core_ristretto255_BYTES +
     crypto_scalarmult_BYTES) as usize;
-const OPAQUE_REGISTER_SECRET_LEN: usize = (
+pub const OPAQUE_REGISTER_SECRET_LEN: usize = (
     crypto_scalarmult_SCALARBYTES +
     crypto_core_ristretto255_SCALARBYTES) as usize;
 
