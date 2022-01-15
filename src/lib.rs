@@ -39,7 +39,7 @@ pub const OPAQUE_REGISTER_SECRET_LEN: usize = (
     crypto_scalarmult_SCALARBYTES +
     crypto_core_ristretto255_SCALARBYTES) as usize;
 
-fn opaque_server_auth_ctx_len() -> usize {
+pub fn opaque_server_auth_ctx_len() -> usize {
     crypto_auth_hmacsha512_KEYBYTES as usize +
         unsafe { crypto_hash_sha512_statebytes() }
 }
