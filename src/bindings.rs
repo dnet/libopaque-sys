@@ -225,7 +225,6 @@ pub type Opaque_PkgTarget = ::std::os::raw::c_uchar;
 #[repr(C, packed)]
 #[derive(Debug, Copy, Clone)]
 pub struct Opaque_PkgConfig {
-    pub _bitfield_align_1: [u8; 0],
     pub _bitfield_1: __BindgenBitfieldUnit<[u8; 2usize]>,
 }
 #[test]

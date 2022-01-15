@@ -77,7 +77,6 @@ mod tests {
         let mut rsecS = [0u8; OPAQUE_REGISTER_SECRET_LEN];
         let mut rpub = [0u8; OPAQUE_REGISTER_PUBLIC_LEN];
         let cfg = Opaque_PkgConfig {
-            _bitfield_align_1: *b"",
             _bitfield_1: Opaque_PkgConfig::new_bitfield_1(
                 /* skU */ Opaque_PkgTarget_InSecEnv,
                 /* pkU */ Opaque_PkgTarget_NotPackaged,
@@ -139,7 +138,6 @@ mod tests {
 
         let skS: *const u8 = std::ptr::null();
         let cfg = Opaque_PkgConfig {
-            _bitfield_align_1: *b"",
             _bitfield_1: Opaque_PkgConfig::new_bitfield_1(
                 /* skU */ Opaque_PkgTarget_InSecEnv,
                 /* pkU */ Opaque_PkgTarget_NotPackaged,
