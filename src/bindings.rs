@@ -156,9 +156,9 @@ fn bindgen_test_layout_Opaque_Ids() {
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct Opaque_App_Infos {
-    pub info: *mut u8,
+    pub info: *const u8,
     pub info_len: size_t,
-    pub einfo: *mut u8,
+    pub einfo: *const u8,
     pub einfo_len: size_t,
 }
 #[test]
